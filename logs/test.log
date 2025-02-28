@@ -1,0 +1,27 @@
+2025-02-28 21:48:40 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\Prem\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-02-28 21:48:40 [main] INFO  resellerPortal.resellerLogin - Initializing WebDriver...
+2025-02-28 21:48:43 [main] INFO  resellerPortal.resellerLogin - Navigated to Reseller Login Page.
+2025-02-28 21:48:43 [main] INFO  resellerPortal.resellerLogin - Executing test: testResellerValidLogin
+2025-02-28 21:48:43 [main] INFO  resellerPortal.resellerLogin - Test execution completed.
+2025-02-28 21:48:43 [main] INFO  resellerPortal.resellerLogin - Waiting before closing browser...
+2025-02-28 21:48:48 [main] INFO  resellerPortal.resellerLogin - Browser closed successfully.
+2025-02-28 21:49:19 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\Prem\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-02-28 21:49:19 [main] INFO  resellerPortal.resellerLogin - Initializing WebDriver...
+2025-02-28 21:49:22 [main] INFO  resellerPortal.resellerLogin - Navigated to Reseller Login Page.
+2025-02-28 21:49:22 [main] INFO  resellerPortal.resellerLogin - Executing test: testResellerValidLogin
+2025-02-28 21:49:22 [main] INFO  resellerPortal.resellerLogin - Test execution completed.
+2025-02-28 21:49:22 [main] INFO  resellerPortal.resellerLogin - Waiting before closing browser...
+2025-02-28 21:49:27 [main] INFO  resellerPortal.resellerLogin - Browser closed successfully.
+2025-02-28 21:50:49 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\Prem\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-02-28 21:50:49 [main] INFO  resellerPortal.resellerLogin - Initializing WebDriver...
+2025-02-28 21:50:53 [main] INFO  resellerPortal.resellerLogin - Navigated to Reseller Login Page.
+2025-02-28 21:50:53 [main] INFO  resellerPortal.resellerLogin - Executing test: testResellerValidLogin
+2025-02-28 21:50:53 [main] INFO  resellerPortal.resellerLogin - Test execution completed.
+2025-02-28 21:50:53 [main] INFO  resellerPortal.resellerLogin - Waiting before closing browser...
+2025-02-28 21:50:58 [main] INFO  resellerPortal.resellerLogin - Browser closed successfully.
