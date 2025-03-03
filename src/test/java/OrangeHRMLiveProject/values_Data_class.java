@@ -1,7 +1,7 @@
 package OrangeHRMLiveProject;
 
 public class values_Data_class {
-     String demo_url="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
+    String demo_url="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
 
     String Username ="Admin";
 

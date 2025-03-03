@@ -15,21 +15,21 @@ import java.util.List;
 
 public class ResellerLogin extends baseClass {
     private static final Logger logger = LogManager.getLogger(ResellerLogin.class);
-    private static WebDriver driver;
-    private WebDriverWait wait;
+    static WebDriver driver;
+    private static WebDriverWait wait;
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         logger.info("Initializing WebDriver...");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(base_url);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         logger.info("Navigated to Reseller Login Page. Page title: " + driver.getTitle());
     }
 
     @Test(priority = 1)
-    public void loginWithMobileNumber() {
+    public static void loginWithMobileNumber() {
         logger.info("Executing test: loginWithMobileNumber");
 
         WebElement mobileInput = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[contains(@placeholder,'0000000000')]")));
@@ -52,14 +52,22 @@ public class ResellerLogin extends baseClass {
         logger.info("Reseller login successful.");
     }
 
-    @Test(priority = 2)
-    public void loginWithMobileEmail() {
+    @Test(priority = 3)
+    public void loginWithMobileEmail() throws InterruptedException {
         logger.info("Executing test: loginWithMobileEmail");
-        System.out.println("All done");
+        driver.findElement(By.xpath("//button[.='login with email or Branch']")).click();
+        driver.findElement(By.xpath("//input[contains(@type,'text')]")).sendKeys(reseller_eamil);
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(reseller_pswd);
+        driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
+        Thread.sleep(5000);
+        partnerLogout();
+        logger.info(driver.getCurrentUrl());
+
+
     }
 
-    @Test(priority = 3)
-    public void partnerLogout() throws InterruptedException {
+    @Test(priority = 2)
+    public static void partnerLogout() throws InterruptedException {
         logger.info("Executing test: partnerLogout");
 
         WebElement logoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@class,'border-gray-300')]")));
@@ -71,6 +79,7 @@ public class ResellerLogin extends baseClass {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
         logger.info("Partner logged out successfully.");
+        Thread.sleep(2000);
     }
 
     @AfterClass
