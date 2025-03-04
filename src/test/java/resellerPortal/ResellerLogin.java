@@ -15,8 +15,9 @@ import java.util.List;
 
 public class ResellerLogin extends baseClass {
     private static final Logger logger = LogManager.getLogger(ResellerLogin.class);
+
     static WebDriver driver;
-    private static WebDriverWait wait;
+    static WebDriverWait wait;
 
     @BeforeClass
     public static void setup() {

@@ -12,6 +12,17 @@ public class baseClass {
     String reseller_eamil="prem.praapati@sastechstudio.com";
     String reseller_pswd="Prem123@";
 
+    String expectedProduct = "EVERYTHING IN THIS PRODUCT";
 
+    // add team member data
+    String child_name = "RajaNetaJI";
+    String childMo_Number ="8010119531";
+
+    //Admin login user_id and password
+
+    String admin_eamil = "admin@aiqahealth.com";
+    String admin_pswd= "admin123@";
+
+    String addTeamsOTP="1234";
 
 }
