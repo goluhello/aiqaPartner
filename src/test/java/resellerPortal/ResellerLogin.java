@@ -30,6 +30,7 @@ public class ResellerLogin extends baseClass {
     }
 
     @Test(priority = 1)
+
     public static void loginWithMobileNumber() {
         logger.info("Executing test: loginWithMobileNumber");
 
