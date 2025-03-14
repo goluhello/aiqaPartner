@@ -25,4 +25,9 @@ public class baseClass {
 
     String addTeamsOTP="1234";
 
+
+    //Rasie claim flow
+
+    String searchByMobileNo = "8768578574";
+
 }

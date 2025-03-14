@@ -15,11 +15,11 @@ import java.util.List;
 public class docLogin extends featureWithUrlFiles {
 
     private static final Logger logger = LogManager.getLogger(docLogin.class);
-    private WebDriver driver;
-    private WebDriverWait wait;
+    static WebDriver driver;
+    private static WebDriverWait wait;
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         logger.info("Initializing WebDriver...");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -29,12 +29,32 @@ public class docLogin extends featureWithUrlFiles {
     }
 
     @Test(priority = 1)
-    public void doctorLogin() throws InterruptedException {
+    public static void doctorLogin() throws InterruptedException {
+
         driver.findElement(By.id("standard-size-small")).sendKeys(User_id);
+
         logger.info("Doctor mobile number entered: " + User_id);
 
         driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
         Thread.sleep(2000);
+
+        WebElement otpSendMessage;
+        try {
+            otpSendMessage = driver.findElement(By.xpath("//div[contains(text(),'Otp send successfully')]"));
+        } catch (NoSuchElementException e) {
+            logger.error("OTP confirmation message not found!");
+            return;
+        }
+
+        String actualMessage = otpSendMessage.getText();
+        String expectedMessage = "Otp send successfully";
+
+        if (!actualMessage.equals(expectedMessage)) {
+            logger.error("Expected message not found! Actual message: " + actualMessage);
+            return;
+        }
+
+        logger.info("Message is: " + expectedMessage);
 
         List<WebElement> otpFields = driver.findElements(By.xpath("//input[contains(@aria-label, 'Digit')]"));
         if (otpFields.isEmpty()) {
@@ -45,16 +65,29 @@ public class docLogin extends featureWithUrlFiles {
         for (int i = 0; i < OTP.length() && i < otpFields.size(); i++) {
             otpFields.get(i).sendKeys(String.valueOf(OTP.charAt(i)));
         }
-        logger.info("The entered OTP is: " + OTP);
 
+        logger.info("The entered OTP is: " + OTP);
         Thread.sleep(1000);
+
+        try {
+            WebElement otpConfirmationMessage = driver.findElement(By.xpath("//div[starts-with(text(),'OTP verified successful.')]"));
+            String actualOTPMessage = otpConfirmationMessage.getText();
+            String finalMessageOTP = "OTP verified successful.";
+            if (actualOTPMessage.equals(finalMessageOTP)) {
+                logger.info("Actual message is: " + finalMessageOTP);
+            } else {
+                logger.info("OTP message not found!");
+            }
+        } catch (NoSuchElementException e) {
+            logger.error("OTP verification message not found!");
+        }
+
         driver.findElement(By.xpath("//button[text()='Verify Otp']")).click();
         logger.info("Login successful");
         Thread.sleep(2000);
     }
-
     @Test(priority = 2)
-    public void doctorLogout() throws InterruptedException {
+    public static void doctorLogout() throws InterruptedException {
         logger.info("Doctor navigating to My Profile section for Logout");
 
         WebElement myProfile = driver.findElement(By.xpath("//span[contains(text(),'My Profile')]"));
