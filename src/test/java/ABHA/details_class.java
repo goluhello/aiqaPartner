@@ -7,13 +7,13 @@ public class details_class {
     //These details for ABHA signup
 
     String FullName ="Prem Test Demo";
-    String MobileNumber="6750395250";
+    static String MobileNumber="9000008210";
     String DOB="09-07-2000";
-    String EmailAddress="Premtstkemo@gmail.com";
+    String EmailAddress="mrllpaalekppmo@gmail.com";
     String MedicalRegistrationNumber="12345675";
     String HospitalName="MBBS collage Gurgaon";
     String HospitalAddress=HospitalName;
-    String Passwrod="Demo0908@";
+    static String Passwrod="Demo0908@";
     String ConfirmPassword=Passwrod;
     String imageLocation = "C:\\Users\\Prem\\Downloads\\IMG_0521.jpeg";
 

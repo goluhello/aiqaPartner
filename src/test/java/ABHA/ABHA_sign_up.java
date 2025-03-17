@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.time.Duration;
+import java.util.List;
+
 
 public class ABHA_sign_up extends details_class {
     private static final Logger logger = LogManager.getLogger(ABHA_sign_up.class);
@@ -28,8 +30,8 @@ public class ABHA_sign_up extends details_class {
         logger.info("ABHA title is: " + driver.getTitle());
     }
 
-    @Test
-    public void signUp() throws InterruptedException {
+    @Test(priority = 1)
+    public void signUp  () throws InterruptedException {
         logger.info("User navigates to signup page");
         driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
         Thread.sleep(1000);
@@ -91,13 +93,46 @@ public class ABHA_sign_up extends details_class {
         } else {
             logger.info("Unexpected alert message: " + actualMessage);
         }
-
-
         Thread.sleep(5000);
+    }
+    @Test(priority = 2)
+    public void loginABHA() throws InterruptedException {
+        logger.info("User navigates to signup page");
+//        driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
+//        Thread.sleep(1000);
+        driver.findElement(By.xpath("//input[@placeholder='0000000000']")).sendKeys(MobileNumber);
+        driver.findElement(By.xpath("//input[@placeholder='Enter password']")).sendKeys(Passwrod);
+        Thread.sleep(1000);
+        WebElement viewPassword=driver.findElement(By.xpath("//button[@class='absolute inset-y-0 end-0 flex items-center z-20 px-3 cursor-pointer text-gray-400 rounded-e-md focus:outline-none focus:text-blue-600']"));
+        viewPassword.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[contains(text(),'Sign In')]")).click();
+        logger.info("user login sucess for the confirmation : - "+ driver.getCurrentUrl());
+        Thread.sleep(5000);
+    }
+    @Test(priority = 3)
+    public void createABHA() {
+        driver.findElement(By.xpath("//button[normalize-space()='Create ABHA']")).click();
+        logger.info("User navigate on Create Screen: - " + driver.getCurrentUrl());
 
+        logger.info("Enter Aadhaar number  ");
+
+        List<WebElement> inputFields = driver.findElements(By.xpath("//input"));
+
+        String inputValue = null;
+        for (WebElement inputField : inputFields) {
+            inputValue = "123456767898";
+            inputField.sendKeys(inputValue);
+        }
+        logger.info("Entered value in input field: " + inputValue);
         driver.quit();
 
 
-
     }
+
 }
+
+
+
+
+
