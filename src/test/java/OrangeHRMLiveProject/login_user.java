@@ -95,6 +95,7 @@ public class login_user extends values_Data_class {
         test = extent.createTest("User Logout Test");
         // Add logout implementation
         test.info("Logout functionality to be implemented.");
+          logger.info(driver.getCurrentUrl());
     }
 
     @AfterClass
