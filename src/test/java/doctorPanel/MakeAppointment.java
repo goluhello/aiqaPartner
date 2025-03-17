@@ -1,7 +1,7 @@
 package doctorPanel;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterMethod;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.slf4j.Logger;
@@ -27,6 +27,12 @@ public class MakeAppointment {
         driver.findElement(By.xpath("//span[starts-with(text(),'Appointments')]")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[contains(text(),'New Appointment')]")).click();
+        Thread.sleep(2000);
+        WebElement sssss=driver.findElement(By.xpath("//button[@aria-label='close']"));
+        sssss.click();
+        logger.error(String.valueOf(sssss));
+
+
 
     }
 
