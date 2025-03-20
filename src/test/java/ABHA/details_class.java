@@ -7,9 +7,9 @@ public class details_class {
     //These details for ABHA signup
 
     String FullName ="Prem Test Demo";
-    static String MobileNumber="9090008210";
+    static String MobileNumber="6090008210";
     String DOB="09-07-2000";
-    String EmailAddress="mrllpmmlekppmo@gmail.com";
+    String EmailAddress="mohitkkkkppmo@gmail.com";
     String MedicalRegistrationNumber="12345675";
     String HospitalName="MBBS collage Gurgaon";
     String HospitalAddress=HospitalName;
