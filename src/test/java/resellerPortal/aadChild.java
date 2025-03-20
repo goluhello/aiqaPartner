@@ -73,7 +73,7 @@ public class aadChild  extends baseClass{
         driver.navigate().refresh();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//input[contains(@placeholder,'0000000000')]")).sendKeys(childMo_Number);
-        logger.info("Reseller mobile number entered: " + childMo_Number);
+        logger.info("Reseller mobile number entered: {}", childMo_Number);
         driver.findElement(By.xpath("//button[contains(text(),'Generate OTP')]")).click();
         logger.info("Generate OTP button clicked.");
         List<WebElement> otpFields = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[contains(@aria-label, 'Digit')]")));
@@ -81,7 +81,7 @@ public class aadChild  extends baseClass{
         for (int i = 0; i < addTeamsOTP.length() && i < otpFields.size(); i++) {
             otpFields.get(i).sendKeys(String.valueOf(addTeamsOTP.charAt(i)));
         }
-        logger.info("OTP entered successfully."+addTeamsOTP);
+        logger.info("OTP entered successfully.{}", addTeamsOTP);
         Thread.sleep(1000);
         WebElement clickOnTermsAndCondition=driver.findElement(By.xpath("//input[@id='t_c_accepted']"));
         clickOnTermsAndCondition.click();
@@ -101,11 +101,11 @@ public class aadChild  extends baseClass{
         String actualResellerName = resellerNameConfirmation.getText();
 
         if (actualResellerName.equals(child_name)) {
-            logger.info("New reseller name is: " + actualResellerName);
+            logger.info("New reseller name is: {}", actualResellerName);
             Thread.sleep(5000);
             partnerLogout();
         } else {
-            logger.info(child_name + " not found...!");
+            logger.info("{} not found...!", child_name);
         }
         Thread.sleep(2000);
         partnerLogout();
@@ -131,7 +131,7 @@ public class aadChild  extends baseClass{
         Thread.sleep(1000);
         WebElement confirmationBtn=driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         confirmationBtn.click();
-        logger.info("user block sucessfully");
+        logger.info("user block successfully");
         Thread.sleep(3000);
     }
     @Test(priority = 4)
@@ -153,6 +153,8 @@ public class aadChild  extends baseClass{
         confirmationBtn.click();
         Thread.sleep(1000);
         logger.info("User Unblock Successfully");
+        partnerLogout();
+        driver.quit();
     }
 
     }
