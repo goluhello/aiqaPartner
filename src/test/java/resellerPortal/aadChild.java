@@ -74,10 +74,8 @@ public class aadChild  extends baseClass{
         Thread.sleep(2000);
         driver.findElement(By.xpath("//input[contains(@placeholder,'0000000000')]")).sendKeys(childMo_Number);
         logger.info("Reseller mobile number entered: " + childMo_Number);
-
         driver.findElement(By.xpath("//button[contains(text(),'Generate OTP')]")).click();
         logger.info("Generate OTP button clicked.");
-
         List<WebElement> otpFields = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//input[contains(@aria-label, 'Digit')]")));
 
         for (int i = 0; i < addTeamsOTP.length() && i < otpFields.size(); i++) {
@@ -97,11 +95,9 @@ public class aadChild  extends baseClass{
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[contains(normalize-space(),'Save and Continue')]")).click();
         Thread.sleep(5000);
-
         WebElement resellerNameConfirmation = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//h3[contains(@class,'text-2xl font-medium text-black mb-6')]")
         ));
-
         String actualResellerName = resellerNameConfirmation.getText();
 
         if (actualResellerName.equals(child_name)) {
@@ -111,8 +107,53 @@ public class aadChild  extends baseClass{
         } else {
             logger.info(child_name + " not found...!");
         }
+        Thread.sleep(2000);
+        partnerLogout();
+        Thread.sleep(2000);
+        loginWithMobileNumber();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//h5[contains(text(),'View Team')]")).click();
+        Thread.sleep(2000);
     }
+    @Test(priority = 3)
+    public void userBlock() throws InterruptedException {
+        WebElement childMobileNumber=driver.findElement(By.xpath("//input[@placeholder='Search...']"));
+        childMobileNumber.sendKeys(childMo_Number);
+        Thread.sleep(500);
+        WebElement searchBtn=driver.findElement(By.xpath("//button[contains(text(),'Search')]"));
+        searchBtn.click();
+        Thread.sleep(5000);
+        WebElement threeDotBtn= driver.findElement(By.xpath("//button[img[@alt='Menu']]"));
+        threeDotBtn.click();
+        Thread.sleep(2000);
+        WebElement blockAccoutn = driver.findElement(By.xpath("//button[contains(text(),'Block Account')]"));
+        blockAccoutn.click();
+        Thread.sleep(1000);
+        WebElement confirmationBtn=driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
+        confirmationBtn.click();
+        logger.info("user block sucessfully");
+        Thread.sleep(3000);
+    }
+    @Test(priority = 4)
+    public void userUnblock() throws InterruptedException {
 
+        WebElement childMobileNumber=driver.findElement(By.xpath("//input[@placeholder='Search...']"));
+        childMobileNumber.sendKeys(childMo_Number);
+        Thread.sleep(500);
+        WebElement searchBtn=driver.findElement(By.xpath("//button[contains(text(),'Search')]"));
+        searchBtn.click();
+        Thread.sleep(5000);
+        WebElement threeDotBtn= driver.findElement(By.xpath("//button[img[@alt='Menu']]"));
+        threeDotBtn.click();
+        Thread.sleep(2000);
+        WebElement clickOnUnblockAccount=driver.findElement(By.xpath("//button[contains(text(),'Activate Account')]"));
+        clickOnUnblockAccount.click();
+        Thread.sleep(2000);
+        WebElement confirmationBtn=driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
+        confirmationBtn.click();
+        Thread.sleep(1000);
+        logger.info("User Unblock Successfully");
+    }
 
     }
 

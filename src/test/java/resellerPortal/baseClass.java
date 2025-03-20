@@ -15,8 +15,8 @@ public class baseClass {
     String expectedProduct = "EVERYTHING IN THIS PRODUCT";
 
     // add team member data
-    String child_name = "RajaNetaJI";
-    String childMo_Number ="8010119531";
+    String child_name = "TigerLigerTstDemo";
+    String childMo_Number ="8549320001";
 
     //Admin login user_id and password
 
