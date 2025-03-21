@@ -132,9 +132,10 @@ public class aadChild  extends baseClass{
         WebElement confirmationBtn=driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         confirmationBtn.click();
         logger.info("user block successfully");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
+        partnerLogout();
     }
-    @Test(priority = 4)
+    @Test(enabled = false)
     public void userUnblock() throws InterruptedException {
 
         WebElement childMobileNumber=driver.findElement(By.xpath("//input[@placeholder='Search...']"));
@@ -153,9 +154,34 @@ public class aadChild  extends baseClass{
         confirmationBtn.click();
         Thread.sleep(1000);
         logger.info("User Unblock Successfully");
-        partnerLogout();
-        driver.quit();
     }
+    @Test(priority = 4)
+    public void LoginAgain() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement mobileInput = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[contains(@placeholder,'0000000000')]")));
+        mobileInput.sendKeys(childMo_Number);
+        logger.info("Reseller mobile number entered.");
+
+        WebElement generateOtpButton = driver.findElement(By.xpath("//button[contains(text(),'Generate OTP')]"));
+        generateOtpButton.click();
+        Thread.sleep(1000);
+        WebElement deactivateMessage = driver.findElement(By.xpath("//div[contains(text(),'Your account is inactive please contact support team.')]"));
+
+        String confirmationDeactivateMessage = deactivateMessage.getText();
+
+        if (confirmationDeactivateMessage.contains("Your account is inactive please contact support team.")) {
+            System.out.println("Deactivation message is displayed correctly: " + confirmationDeactivateMessage);
+            userUnblock();
+        } else {
+            System.out.println("Deactivation message is NOT displayed as expected.");
+        }
+
+
+
+
+
+    }
+    
 
     }
 

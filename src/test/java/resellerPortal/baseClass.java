@@ -12,11 +12,11 @@ public class baseClass {
     String reseller_eamil="prem.praapati@sastechstudio.com";
     String reseller_pswd="Prem123@";
 
-    String expectedProduct = "EVERYTHING IN THIS PRODUCT";
+    String expectedProduct = "Digital Health Subscription Combo 9998";
 
     // add team member data
-    String child_name = "MRMRMRMRMMRMR";
-    String childMo_Number ="8123320001";
+    String child_name = "Mentionsesfdsfrefeth";
+    String childMo_Number ="7004520594";
 
     //Admin login user_id and password
 
@@ -29,5 +29,19 @@ public class baseClass {
     //Rasie claim flow
 
     String searchByMobileNo = "8768578574";
+
+
+
+    //Sell Paln-----
+
+//    Primary Member name
+
+
+    String Primaryname = "";
+    String PrimaryMobileNumber= "";
+    String PrimaryEamil= "";
+    String PrimaryDOB= "";
+    String PrimaryGovtID= "";
+    String Pincode= "";
 
 }
